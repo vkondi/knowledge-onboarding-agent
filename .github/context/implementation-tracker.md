@@ -104,14 +104,14 @@
 
 ---
 
-## Decisions Pending
+## Decisions Made
 
-| Decision | Blocking | Priority |
-|---|---|---|
-| Embedding model selection (ADR-001) | Phase 2 | High |
-| ChromaDB vs FAISS as primary store | Phase 3 | Medium |
-| Chunking strategy (size, overlap, method) | Phase 1 | High |
-| LLM model selection for Ollama | Phase 5 | Medium |
+| Decision | Resolution |
+|---|---|
+| Embedding model selection (ADR-001) | `nomic-embed-text` — see [ADR-001](../../docs/decisions/ADR-001-model-selection.md) (Accepted) |
+| ChromaDB vs FAISS as primary store | ChromaDB primary; FAISS optional fallback |
+| Chunking strategy (size, overlap, method) | `SentenceWindowChunker` — 512 words, 64 overlap |
+| LLM model selection for Ollama | `mistral` (7B Q4) |
 
 ---
 

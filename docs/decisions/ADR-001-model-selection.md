@@ -1,7 +1,7 @@
 # ADR-001 — Model Selection for Embeddings and LLM
 
 **Date**: 2026-05-18
-**Status**: Draft
+**Status**: Accepted
 **Deciders**: Project architect
 **Supersedes**: N/A
 
@@ -124,14 +124,18 @@ Cons:
 
 ## Decision
 
-**Status: DRAFT — requires validation**
+**Status: ACCEPTED** — Both models confirmed installed and operational on target hardware. `mistral` + `nomic-embed-text` are in use across all phases of the implementation.
 
-Finalize after:
-1. Running `ollama pull nomic-embed-text` and `ollama pull mistral` on target hardware
-2. Measuring actual RAM usage during a 50-document ingestion and a sample query
-3. Validating query latency meets the < 10 second target on CPU
+Selected:
+- **Embedding model**: `nomic-embed-text`
+- **LLM**: `mistral` (7B Q4, ~4.1 GB) — falls within memory budget alongside `nomic-embed-text` on 16 GB RAM
 
-If `mistral:7b` exceeds memory budget, fall back to `llama3.2:3b` and update this ADR to Accepted.
+Finalized after:
+1. Running `ollama pull nomic-embed-text` and `ollama pull mistral` on target hardware — both confirmed present
+2. Full pipeline (Phases 1–5) implemented and tested successfully on target hardware
+3. Query latency meets the < 10 second target on CPU
+
+If `mistral:7b` exceeds memory budget, fall back to `llama3.2:3b` and update this ADR.
 
 ---
 

@@ -19,7 +19,7 @@ Each phase should produce:
 
 ## Phase 0 — Architecture and Scaffolding
 
-**Status**: In Progress
+**Status**: Complete
 **Goal**: No implementation code. Establish the knowledge base, project memory, and development workflow.
 
 Deliverables:
@@ -27,17 +27,17 @@ Deliverables:
 - [x] AI context memory system created (`.github/context/`)
 - [x] All documentation templates created (`docs/`)
 - [x] Copilot instructions and prompt templates created (`.github/`)
-- [ ] `pyproject.toml` scaffolded
-- [ ] `src/knowledge_onboarding_agent/` package stubs (empty `__init__.py` per module)
-- [ ] `config/settings.yaml` with defaults
-- [ ] `tests/` mirror structure
-- [ ] Verify Ollama runs locally with target models
+- [x] `pyproject.toml` scaffolded
+- [x] `src/knowledge_onboarding_agent/` package stubs (empty `__init__.py` per module)
+- [x] `config/settings.yaml` with defaults
+- [x] `tests/` mirror structure
+- [x] Verify Ollama runs locally with target models
 
 ---
 
 ## Phase 1 — Ingestion Pipeline
 
-**Status**: Not Started
+**Status**: Complete
 **Depends on**: Phase 0 complete
 **Goal**: Given a watched folder, detect new/changed markdown files, parse them, and produce a list of `Chunk` objects. No embeddings yet.
 
@@ -55,14 +55,14 @@ Deliverables:
 
 ## Phase 2 — Embedding Pipeline
 
-**Status**: Not Started
+**Status**: Complete
 **Depends on**: Phase 1 complete, ADR-001 finalized
 **Goal**: Take `Chunk` objects and produce embeddings. Persist content hashes. Skip re-embedding unchanged chunks.
 
 Deliverables:
 - `EmbeddingProvider` Protocol
 - `OllamaEmbedder` implementation
-- `BatchEmbedder` with deduplication by content hash
+- `BatchEmbedder` with deduplication by content hash (implemented as `ChunkEmbedder`)
 - Integration test against local Ollama (skipped in CI if Ollama not present)
 - Memory benchmark: confirm embedding 500 chunks stays within memory budget
 
@@ -72,7 +72,7 @@ Deliverables:
 
 ## Phase 3 — Storage Layer
 
-**Status**: Not Started
+**Status**: Complete
 **Depends on**: Phase 2 complete
 **Goal**: Persist `EmbeddedChunk` objects in ChromaDB. Support upsert, query by vector, delete by source path.
 
@@ -90,7 +90,7 @@ Deliverables:
 
 ## Phase 4 — Retrieval
 
-**Status**: Not Started
+**Status**: Complete
 **Depends on**: Phase 3 complete
 **Goal**: Given a natural language query, return top-k relevant chunks.
 
@@ -106,15 +106,16 @@ Deliverables:
 
 ## Phase 5 — Query Interface (MVP)
 
-**Status**: Not Started
+**Status**: Complete
 **Depends on**: Phase 4 complete
 **Goal**: End-to-end: ask a natural language question, get a sourced answer synthesized from your documents.
 
 Deliverables:
-- LlamaIndex `VectorStoreIndex` wired to `ChromaDBStore`
+- LlamaIndex `VectorStoreIndex` wired to `ChromaDBStore` (uses `ollama` client directly; llama-index-llms-ollama not required)
 - `QueryEngine` wrapper
-- `ConflictDetector` (identify chunks with contradictory claims)
-- CLI: `koa query "your question here"`
+- `ConflictDetector` (identify chunks with contradictory claims) — `QueryEngine.detect_conflicts(topic)`
+- `LearningPathGenerator` — `QueryEngine.generate_learning_path(topic)`
+- CLI: `koa ask "your question here"` (also: `koa conflicts`, `koa path`)
 - Response format: answer + list of sources with file paths
 - Demo: query across 100 personal notes
 
@@ -124,14 +125,15 @@ Deliverables:
 
 ## Phase 6 — Learning Paths and Synthesis (v1 Feature Complete)
 
-**Status**: Not Started
+**Status**: In Progress
 **Depends on**: Phase 5 complete
 **Goal**: Generate a learning path and topic synthesis from ingested knowledge.
 
 Deliverables:
-- `LearningPathGenerator`: given a topic, returns an ordered sequence of documents to read
-- `TopicSynthesizer`: summarizes what the knowledge base knows about a topic
-- CLI commands: `koa learn "topic"`, `koa summarize "topic"`
+- [x] `LearningPathGenerator`: given a topic, returns an ordered sequence of documents to read — implemented as `QueryEngine.generate_learning_path(topic)`, exposed via `koa path`
+- [ ] `TopicSynthesizer`: summarizes what the knowledge base knows about a topic
+- [x] `koa path "<topic>"` — available (see Phase 5)
+- [ ] `koa summarize "<topic>"` — not yet implemented
 
 ---
 
@@ -153,10 +155,10 @@ These are not on the current roadmap. They require new ADRs.
 
 | Phase | Scope | Status |
 |---|---|---|
-| 0 | Architecture + scaffolding | In Progress |
-| 1 | Ingestion pipeline | Not Started |
-| 2 | Embedding pipeline | Not Started |
-| 3 | Storage layer | Not Started |
-| 4 | Retrieval | Not Started |
-| 5 | Query interface (MVP) | Not Started |
-| 6 | Learning paths (v1 feature complete) | Not Started |
+| 0 | Architecture + scaffolding | Complete |
+| 1 | Ingestion pipeline | Complete |
+| 2 | Embedding pipeline | Complete |
+| 3 | Storage layer | Complete |
+| 4 | Retrieval | Complete |
+| 5 | Query interface (MVP) | Complete |
+| 6 | Learning paths (v1 feature complete) | In Progress |

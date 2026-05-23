@@ -21,11 +21,11 @@
 | Component | Estimated RAM | Notes |
 |---|---|---|
 | OS + background | ~4–6 GB | Baseline |
-| Ollama LLM (llama3.2 3B Q4) | ~2.5 GB | Conservative estimate |
+| Ollama LLM (mistral 7B Q4) | ~4.5 GB | Conservative estimate |
 | Ollama embedding model (nomic-embed-text) | ~0.5 GB | |
 | ChromaDB in-process | ~0.5–1 GB | Depends on corpus size |
 | Python process (app) | ~0.3–0.5 GB | |
-| **Total estimated** | **~8–9 GB** | Leaves ~7 GB headroom |
+| **Total estimated** | **~10–12 GB** | Leaves ~4–6 GB headroom |
 
 **Rule**: The application must never cause the OS to swap to disk under normal load. If a component approaches its memory budget, it must page data or reduce batch size before allocating more.
 

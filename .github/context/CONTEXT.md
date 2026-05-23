@@ -80,7 +80,7 @@ Each stage is a separate Python module with no direct cross-imports. They commun
 
 | ADR | Decision | Status |
 |---|---|---|
-| [ADR-001](../docs/decisions/ADR-001-model-selection.md) | Model selection for embeddings and LLM | Draft |
+| [ADR-001](../docs/decisions/ADR-001-model-selection.md) | Model selection for embeddings and LLM | Accepted |
 
 ---
 

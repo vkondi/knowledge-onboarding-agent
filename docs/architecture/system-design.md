@@ -99,9 +99,9 @@ class Chunk:
 |---|---|
 | `EmbeddingProvider` | Protocol defining `.embed(texts: list[str]) -> list[list[float]]` |
 | `OllamaEmbedder` | Calls Ollama `/api/embeddings` endpoint |
-| `BatchEmbedder` | Batches chunks, skips already-embedded (by content hash) |
+| `ChunkEmbedder` | Batches chunks, skips already-embedded (by content hash) |
 
-**Design note**: Embedding is the most expensive operation. The `BatchEmbedder` must check the `content_hash` of each chunk against storage before calling Ollama. Only new or changed chunks are re-embedded.
+**Design note**: Embedding is the most expensive operation. The `ChunkEmbedder` must check the `content_hash` of each chunk against storage before calling Ollama. Only new or changed chunks are re-embedded.
 
 ---
 
