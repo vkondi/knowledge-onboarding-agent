@@ -1,4 +1,4 @@
-# Deep Learning Fundamentals
+﻿# Deep Learning Fundamentals
 
 Deep learning is a subfield of machine learning that uses neural networks with many layers to learn hierarchical representations of data.
 
@@ -19,7 +19,7 @@ Activation functions introduce non-linearity, enabling networks to model complex
 
 | Function | Formula | Use case |
 |---|---|---|
-| ReLU | max(0, x) | Default for hidden layers — fast, avoids vanishing gradient |
+| ReLU | max(0, x) | Default for hidden layers - fast, avoids vanishing gradient |
 | Sigmoid | 1 / (1 + e⁻ˣ) | Binary classification output |
 | Softmax | eˣⁱ / Σeˣʲ | Multi-class output |
 | Tanh | (eˣ - e⁻ˣ) / (eˣ + e⁻ˣ) | RNN hidden states |
@@ -87,14 +87,14 @@ Used in: LLMs (GPT, Llama, Mistral), vision (ViT), speech (Whisper).
 
 ### Regularisation
 
-- **Dropout**: randomly zeroes neuron activations during training — prevents co-adaptation.
-- **Batch normalisation**: normalises layer inputs — faster training, more stable gradients.
+- **Dropout**: randomly zeroes neuron activations during training - prevents co-adaptation.
+- **Batch normalisation**: normalises layer inputs - faster training, more stable gradients.
 - **Weight decay (L2)**: penalises large weights in the loss function.
 - **Data augmentation**: artificially expands training data (flips, crops, colour jitter for images).
 
 ### Learning Rate Schedules
 
-- **Warmup + cosine decay**: warm up for a few thousand steps, then decay — standard for Transformer training.
+- **Warmup + cosine decay**: warm up for a few thousand steps, then decay - standard for Transformer training.
 - **ReduceLROnPlateau**: halve the LR when validation loss stops improving.
 
 ## Transfer Learning
@@ -103,6 +103,6 @@ Train on a large dataset (e.g., ImageNet, a large text corpus), then fine-tune o
 
 - **Feature extraction**: freeze pretrained weights; only train the final layers.
 - **Fine-tuning**: unfreeze some or all layers and continue training at a lower learning rate.
-- **LoRA / QLoRA**: low-rank adapters that fine-tune a small number of extra parameters without modifying the base model — the dominant approach for LLM fine-tuning.
+- **LoRA / QLoRA**: low-rank adapters that fine-tune a small number of extra parameters without modifying the base model - the dominant approach for LLM fine-tuning.
 
 Transfer learning dramatically reduces data and compute requirements.

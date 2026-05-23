@@ -1,4 +1,4 @@
-# Introduction to Machine Learning
+﻿# Introduction to Machine Learning
 
 Machine learning (ML) is a branch of artificial intelligence that allows systems to learn patterns from data without being explicitly programmed for each task.
 
@@ -6,7 +6,7 @@ Machine learning (ML) is a branch of artificial intelligence that allows systems
 
 ### Supervised Learning
 
-The model learns from labelled training data — each input has a corresponding correct output.
+The model learns from labelled training data - each input has a corresponding correct output.
 
 - **Classification**: Predict a category (e.g., spam vs. not spam, image recognition)
 - **Regression**: Predict a continuous value (e.g., house prices, stock forecasts)
@@ -26,15 +26,15 @@ An agent learns by interacting with an environment and receiving rewards or pena
 
 ## The ML Workflow
 
-1. **Define the problem** — what are you predicting? What counts as success?
-2. **Collect and clean data** — quality data is more important than algorithm choice.
-3. **Exploratory Data Analysis (EDA)** — understand distributions, correlations, and outliers.
-4. **Feature engineering** — transform raw data into informative input features.
-5. **Choose a model** — start simple (linear models), then increase complexity if needed.
-6. **Train the model** — fit the model on training data.
-7. **Evaluate** — measure performance on a held-out test set.
-8. **Tune hyperparameters** — adjust settings to improve generalisation.
-9. **Deploy and monitor** — watch for data drift and model degradation over time.
+1. **Define the problem** - what are you predicting? What counts as success?
+2. **Collect and clean data** - quality data is more important than algorithm choice.
+3. **Exploratory Data Analysis (EDA)** - understand distributions, correlations, and outliers.
+4. **Feature engineering** - transform raw data into informative input features.
+5. **Choose a model** - start simple (linear models), then increase complexity if needed.
+6. **Train the model** - fit the model on training data.
+7. **Evaluate** - measure performance on a held-out test set.
+8. **Tune hyperparameters** - adjust settings to improve generalisation.
+9. **Deploy and monitor** - watch for data drift and model degradation over time.
 
 ## Key Metrics
 

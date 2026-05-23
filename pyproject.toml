@@ -8,13 +8,11 @@ version = "0.1.0"
 description = "Local-first AI-powered knowledge system"
 requires-python = ">=3.11"
 dependencies = [
-    "llama-index>=0.10",
     "chromadb>=0.5",
     "watchdog>=4.0",
     "ollama>=0.2",
     "pydantic>=2.0",
     "pyyaml>=6.0",
-    "mistune>=3.0",
 ]
 
 [project.optional-dependencies]

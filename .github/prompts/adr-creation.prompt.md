@@ -1,9 +1,9 @@
----
+﻿---
 mode: ask
 description: Create an Architecture Decision Record for Knowledge Onboarding Agent.
 ---
 
-# ADR Creation — Knowledge Onboarding Agent
+# ADR Creation - Knowledge Onboarding Agent
 
 ## Context
 
@@ -27,7 +27,7 @@ I need to create an Architecture Decision Record (ADR) for Knowledge Onboarding 
 
 1. [Option A]
 2. [Option B]
-3. [Option C — if applicable]
+3. [Option C - if applicable]
 
 ---
 

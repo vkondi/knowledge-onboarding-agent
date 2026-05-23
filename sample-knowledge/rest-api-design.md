@@ -1,14 +1,14 @@
-# REST API Design
+﻿# REST API Design
 
 REST (Representational State Transfer) is an architectural style for designing networked APIs over HTTP.
 
 ## Core Principles
 
-1. **Uniform interface** — consistent resource URLs and HTTP methods across the API.
-2. **Statelessness** — every request is self-contained; the server holds no client session state.
-3. **Client–server separation** — the UI and data storage are decoupled.
-4. **Cacheability** — responses must declare whether they can be cached.
-5. **Layered system** — clients don't need to know if they're talking to a load balancer, proxy, or the actual server.
+1. **Uniform interface** - consistent resource URLs and HTTP methods across the API.
+2. **Statelessness** - every request is self-contained; the server holds no client session state.
+3. **Client–server separation** - the UI and data storage are decoupled.
+4. **Cacheability** - responses must declare whether they can be cached.
+5. **Layered system** - clients don't need to know if they're talking to a load balancer, proxy, or the actual server.
 
 ## HTTP Methods
 

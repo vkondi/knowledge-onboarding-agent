@@ -1,4 +1,4 @@
-# ADR-001 — Model Selection for Embeddings and LLM
+﻿# ADR-001 - Model Selection for Embeddings and LLM
 
 **Date**: 2026-05-18
 **Status**: Accepted
@@ -11,8 +11,8 @@
 
 Knowledge Onboarding Agent requires two types of models:
 
-1. **An embedding model** — converts text chunks to vector representations for semantic search. Called frequently (every new or changed document). Must be fast and memory-efficient.
-2. **An LLM** — synthesizes retrieved chunks into a natural language answer. Called once per query. Quality matters more than speed, within the memory budget.
+1. **An embedding model** - converts text chunks to vector representations for semantic search. Called frequently (every new or changed document). Must be fast and memory-efficient.
+2. **An LLM** - synthesizes retrieved chunks into a natural language answer. Called once per query. Quality matters more than speed, within the memory budget.
 
 Both must run locally via Ollama on a 16GB RAM laptop with no GPU. This ADR documents the selection process.
 
@@ -95,7 +95,7 @@ Pros:
 - Strong context following (important for RAG)
 
 Cons:
-- Larger memory footprint — leaves less headroom
+- Larger memory footprint - leaves less headroom
 
 #### Option C: `phi3:mini` (Microsoft, Q4 quantized)
 
@@ -124,14 +124,14 @@ Cons:
 
 ## Decision
 
-**Status: ACCEPTED** — Both models confirmed installed and operational on target hardware. `mistral` + `nomic-embed-text` are in use across all phases of the implementation.
+**Status: ACCEPTED** - Both models confirmed installed and operational on target hardware. `mistral` + `nomic-embed-text` are in use across all phases of the implementation.
 
 Selected:
 - **Embedding model**: `nomic-embed-text`
-- **LLM**: `mistral` (7B Q4, ~4.1 GB) — falls within memory budget alongside `nomic-embed-text` on 16 GB RAM
+- **LLM**: `mistral` (7B Q4, ~4.1 GB) - falls within memory budget alongside `nomic-embed-text` on 16 GB RAM
 
 Finalized after:
-1. Running `ollama pull nomic-embed-text` and `ollama pull mistral` on target hardware — both confirmed present
+1. Running `ollama pull nomic-embed-text` and `ollama pull mistral` on target hardware - both confirmed present
 2. Full pipeline (Phases 1–5) implemented and tested successfully on target hardware
 3. Query latency meets the < 10 second target on CPU
 
@@ -144,7 +144,7 @@ If `mistral:7b` exceeds memory budget, fall back to `llama3.2:3b` and update thi
 ### Positive
 - `nomic-embed-text` leaves substantial memory headroom for ChromaDB and the application
 - 8192 token context allows larger, more semantically complete chunks
-- Both models are widely used with LlamaIndex — good documentation
+- Both models are widely used with LlamaIndex - good documentation
 
 ### Negative / Tradeoffs
 - `mistral:7b` on CPU will be slower than GPU inference (expected ~5–15 tokens/sec)

@@ -1,4 +1,4 @@
-# Python Advanced Concepts
+﻿# Python Advanced Concepts
 
 Covers Python features beyond the basics: decorators, generators, context managers, and type hints.
 
@@ -64,7 +64,7 @@ def fib(n):
 
 ## Generators
 
-Generators produce values lazily — only computing the next item on demand. They use `yield` instead of `return`.
+Generators produce values lazily - only computing the next item on demand. They use `yield` instead of `return`.
 
 ```python
 def fibonacci():
@@ -80,10 +80,10 @@ print([next(gen) for _ in range(10)])  # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 ### Generator expressions
 
 ```python
-# List comprehension (eager — all in memory)
+# List comprehension (eager - all in memory)
 squares_list = [x**2 for x in range(1_000_000)]
 
-# Generator expression (lazy — one at a time)
+# Generator expression (lazy - one at a time)
 squares_gen = (x**2 for x in range(1_000_000))
 ```
 
@@ -147,7 +147,7 @@ with temporary_directory() as tmp:
 
 ## Type Hints
 
-Python's type system is gradual — hints are optional and checked by tools like `mypy`, not at runtime.
+Python's type system is gradual - hints are optional and checked by tools like `mypy`, not at runtime.
 
 ```python
 from typing import Optional

@@ -1,4 +1,4 @@
-# Docker and Containerisation
+﻿# Docker and Containerisation
 
 Docker packages applications and their dependencies into portable, isolated containers that run consistently across environments.
 
@@ -13,7 +13,7 @@ Docker packages applications and their dependencies into portable, isolated cont
 ## Dockerfile
 
 ```dockerfile
-# Base image — use specific tags, never just "latest" in production
+# Base image - use specific tags, never just "latest" in production
 FROM python:3.11-slim
 
 # Set working directory inside the container
@@ -30,7 +30,7 @@ COPY src/ ./src/
 RUN useradd --no-create-home appuser
 USER appuser
 
-# Document the port the app listens on (informational only — doesn't publish it)
+# Document the port the app listens on (informational only - doesn't publish it)
 EXPOSE 8000
 
 # Default command
@@ -109,13 +109,13 @@ docker compose down -v        # also remove named volumes
 
 ## Volumes and Data Persistence
 
-Containers are ephemeral — data written to the container filesystem is lost when the container is removed.
+Containers are ephemeral - data written to the container filesystem is lost when the container is removed.
 
 ```bash
-# Named volume (managed by Docker — preferred for databases)
+# Named volume (managed by Docker - preferred for databases)
 docker run -v postgres_data:/var/lib/postgresql/data postgres:16
 
-# Bind mount (maps a host directory — preferred for development)
+# Bind mount (maps a host directory - preferred for development)
 docker run -v ./src:/app/src my-app:1.0
 ```
 
@@ -149,7 +149,7 @@ CMD ["my-app"]
 
 ## Security Basics
 
-- Never run containers as `root` — create a non-root user in the Dockerfile.
-- Don't embed secrets in images — use environment variables or secret managers.
+- Never run containers as `root` - create a non-root user in the Dockerfile.
+- Don't embed secrets in images - use environment variables or secret managers.
 - Scan images for vulnerabilities: `docker scout cves my-app:1.0`
 - Use minimal base images (`-slim`, `-alpine`) to reduce attack surface.

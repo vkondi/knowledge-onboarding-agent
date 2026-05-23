@@ -1,4 +1,4 @@
----
+﻿---
 title: Getting Started with Retrieval-Augmented Generation
 tags: [rag, ai, llm]
 author: Notes
@@ -19,7 +19,7 @@ generator. The retriever embeds the user's query into a vector and searches the
 knowledge base for semantically similar documents. The generator then uses both
 the original query and the retrieved documents as context to produce an answer.
 
-The knowledge base is typically a vector store — a database optimized for
+The knowledge base is typically a vector store - a database optimized for
 approximate nearest-neighbor search over high-dimensional embedding vectors.
 
 ## Why Use RAG

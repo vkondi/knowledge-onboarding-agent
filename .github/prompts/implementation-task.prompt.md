@@ -1,15 +1,15 @@
----
+﻿---
 mode: agent
 description: Implement a specific Knowledge Onboarding Agent task. Loads conventions and proposes interface before writing code.
 ---
 
-# Implementation Task — Knowledge Onboarding Agent
+# Implementation Task - Knowledge Onboarding Agent
 
 ## Context
 
 I am working on **Knowledge Onboarding Agent**, a local-first AI knowledge system.
 
-**Current phase**: [Phase N — name from roadmap]
+**Current phase**: [Phase N - name from roadmap]
 **Task**: [Exact task from `implementation-tracker.md`]
 
 ## Relevant architecture

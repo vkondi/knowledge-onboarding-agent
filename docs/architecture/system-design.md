@@ -1,4 +1,4 @@
-# System Design — Knowledge Onboarding Agent
+﻿# System Design - Knowledge Onboarding Agent
 
 > **Purpose**: Describe the architecture of the system: components, data flow, interfaces, and design principles.
 > This is the primary reference when working on any component. Keep it updated as the design evolves.
@@ -56,7 +56,7 @@ Each stage is:
                         ▼
 ┌─────────────────────────────────────────────────────────┐
 │                  5. ORCHESTRATION                       │
-│  LlamaIndex QueryEngine + Ollama LLM                    │
+│  QueryEngine + Ollama LLM (via ollama.Client)           │
 │  Features: QA, conflict detection, learning paths       │
 │  Output: Response (answer + sources + metadata)         │
 └─────────────────────────────────────────────────────────┘
@@ -80,14 +80,15 @@ Each stage is:
 ```python
 @dataclass
 class Chunk:
-    id: str                  # deterministic hash of content
-    source_path: str         # absolute path to source file
-    content: str             # raw text content
-    metadata: dict           # headings, tags, timestamps, word count
-    content_hash: str        # SHA-256 of content for change detection
+    id: str             # stable identifier: "<source_stem>:<chunk_index>"
+    source_path: Path   # absolute path to source file
+    content: str        # raw text content
+    chunk_index: int    # 0-based position within the source document
+    metadata: dict      # heading context, word count, source file path, etc.
+    content_hash: str   # SHA-256 hex digest of content for change detection
 ```
 
-**Design note**: The `ChunkingStrategy` is a Protocol — multiple strategies can be swapped at config time (sentence-window, fixed-size, recursive).
+**Design note**: The `ChunkingStrategy` is a Protocol - multiple strategies can be swapped at config time (sentence-window, fixed-size, recursive).
 
 ---
 
@@ -125,9 +126,9 @@ class Chunk:
 
 | Sub-component | Responsibility |
 |---|---|
-| `SemanticSearch` | Embeds query, runs nearest-neighbor search |
-| `Reranker` | Optional cross-encoder reranking of top-k results |
-| `HybridSearch` | Optional BM25 + semantic fusion |
+| `SemanticSearch` | Embeds query, runs nearest-neighbor search; supports dynamic `top_k` scaling |
+| `Reranker` | _(deferred)_ Cross-encoder reranking of top-k results |
+| `HybridSearch` | _(deferred)_ BM25 + semantic fusion |
 
 **Design note**: Retrieval is read-only. It never writes to storage. The `Reranker` is optional and disabled by default (adds latency).
 
@@ -139,12 +140,9 @@ class Chunk:
 
 | Sub-component | Responsibility |
 |---|---|
-| `QueryEngine` | LlamaIndex-based engine; wraps retrieval + LLM |
-| `ConflictDetector` | Identifies contradictory claims in retrieved chunks |
-| `LearningPathGenerator` | Sequences documents into a learning path |
-| `ResponseFormatter` | Formats response with sources and confidence |
+| `QueryEngine` | Coordinates retrieval + Ollama LLM via `ollama.Client` directly; exposes `ask()`, `detect_conflicts()`, and `generate_learning_path()` methods |
 
-**Design note**: This is the thinnest layer. It should not contain business logic — only coordination. Heavy logic belongs in retrieval or dedicated utilities.
+**Design note**: This is the thinnest layer. It should not contain business logic - only coordination. Heavy logic belongs in retrieval or dedicated utilities. LLM calls are made directly via `ollama.Client`.
 
 ---
 
@@ -157,7 +155,16 @@ FileEvent → [Ingestion] → Chunk → [Embeddings] → EmbeddedChunk → [Stor
 Query → [Retrieval] → RetrievedChunk → [Orchestration] → Response
 ```
 
-Protocols are defined in `src/knowledge_onboarding_agent/interfaces.py`. Concrete implementations import interfaces; nothing imports concrete implementations across stages.
+Protocols defined in `src/knowledge_onboarding_agent/interfaces.py`:
+
+| Protocol | Used by |
+|---|---|
+| `EmbeddingProvider` | `ChunkEmbedder`, `SemanticSearch` |
+| `VectorStore` | `ChunkEmbedder`, `SemanticSearch` |
+| `ChunkingStrategy` | `IngestionPipeline` |
+| `Retriever` | `QueryEngine` |
+
+Concrete implementations import interfaces; nothing imports concrete implementations across stages.
 
 ---
 
@@ -166,13 +173,13 @@ Protocols are defined in `src/knowledge_onboarding_agent/interfaces.py`. Concret
 All runtime configuration lives in `config/settings.yaml`. Components read config at startup. No hardcoded values in source code.
 
 Key config sections:
-- `ingestion.watch_paths` — list of folders to monitor
-- `ingestion.chunking.strategy` — chunking method name
-- `embeddings.model` — Ollama model name
-- `storage.backend` — `chromadb` or `faiss`
-- `storage.path` — local persistence path
-- `retrieval.top_k` — number of results to retrieve
-- `llm.model` — Ollama LLM model name
+- `ingestion.watch_paths` - list of folders to monitor
+- `ingestion.chunking.strategy` - chunking method name
+- `embeddings.model` - Ollama model name
+- `storage.backend` - `chromadb` or `faiss`
+- `storage.path` - local persistence path
+- `retrieval.top_k` - number of results to retrieve
+- `llm.model` - Ollama LLM model name
 
 ---
 

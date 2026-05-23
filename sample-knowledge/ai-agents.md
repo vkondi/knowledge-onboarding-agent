@@ -1,4 +1,4 @@
-````md
+﻿````md
 # Agentic AI for Beginners
 ## A Practical Guide to Understanding and Building AI Agents
 
@@ -443,7 +443,7 @@ Benefits:
 
 # 14. Beginner Project Ideas
 
-## Level 1 — Easy
+## Level 1 - Easy
 
 ### AI FAQ Bot
 
@@ -460,7 +460,7 @@ Tech:
 
 ---
 
-## Level 2 — Intermediate
+## Level 2 - Intermediate
 
 ### AI Research Agent
 
@@ -472,7 +472,7 @@ Features:
 
 ---
 
-## Level 3 — Advanced
+## Level 3 - Advanced
 
 ### Multi-Agent Coding Assistant
 
@@ -487,7 +487,7 @@ Agents:
 
 # 15. Recommended Learning Path
 
-## Phase 1 — Foundations
+## Phase 1 - Foundations
 
 Learn:
 
@@ -498,7 +498,7 @@ Learn:
 
 ---
 
-## Phase 2 — Build Simple Agents
+## Phase 2 - Build Simple Agents
 
 Projects:
 
@@ -508,7 +508,7 @@ Projects:
 
 ---
 
-## Phase 3 — Learn RAG
+## Phase 3 - Learn RAG
 
 Topics:
 
@@ -518,7 +518,7 @@ Topics:
 
 ---
 
-## Phase 4 — Multi-Agent Systems
+## Phase 4 - Multi-Agent Systems
 
 Learn:
 
@@ -528,7 +528,7 @@ Learn:
 
 ---
 
-## Phase 5 — Production Systems
+## Phase 5 - Production Systems
 
 Topics:
 

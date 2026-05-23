@@ -1,4 +1,4 @@
-# SQL and Relational Databases
+﻿# SQL and Relational Databases
 
 SQL (Structured Query Language) is the standard language for querying and manipulating relational databases.
 
@@ -7,10 +7,10 @@ SQL (Structured Query Language) is the standard language for querying and manipu
 - **Table**: a structured collection of rows and columns (like a spreadsheet).
 - **Row (record/tuple)**: one entry in a table.
 - **Column (field/attribute)**: a named property with a specific data type.
-- **Primary key**: uniquely identifies each row — cannot be NULL or duplicate.
-- **Foreign key**: a column referencing the primary key of another table — enforces referential integrity.
+- **Primary key**: uniquely identifies each row - cannot be NULL or duplicate.
+- **Foreign key**: a column referencing the primary key of another table - enforces referential integrity.
 - **Index**: a data structure that speeds up lookups on a column.
-- **Schema**: the structure definition of a database — tables, columns, types, constraints.
+- **Schema**: the structure definition of a database - tables, columns, types, constraints.
 
 ## Basic Queries
 
@@ -91,7 +91,7 @@ CREATE INDEX idx_orders_user_status ON orders(user_id, status);
 CREATE UNIQUE INDEX idx_users_email_unique ON users(email);
 ```
 
-When to index: columns used in `WHERE`, `JOIN ON`, `ORDER BY`. Indexes speed up reads but slow down writes — don't over-index.
+When to index: columns used in `WHERE`, `JOIN ON`, `ORDER BY`. Indexes speed up reads but slow down writes - don't over-index.
 
 ## Transactions
 
@@ -110,14 +110,14 @@ ROLLBACK; -- undo all changes in the transaction
 ```
 
 **ACID:**
-- **Atomicity** — all or nothing.
-- **Consistency** — data remains valid before and after.
-- **Isolation** — concurrent transactions don't interfere.
-- **Durability** — committed data survives crashes.
+- **Atomicity** - all or nothing.
+- **Consistency** - data remains valid before and after.
+- **Isolation** - concurrent transactions don't interfere.
+- **Durability** - committed data survives crashes.
 
 ## Window Functions
 
-Window functions compute values across rows related to the current row — without collapsing them like `GROUP BY`.
+Window functions compute values across rows related to the current row - without collapsing them like `GROUP BY`.
 
 ```sql
 -- Rank employees by salary within each department

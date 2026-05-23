@@ -1,11 +1,11 @@
-# ADR Template
+﻿# ADR Template
 
 > Copy this file to `ADR-NNN-short-title.md` when creating a new decision record.
-> Fill in all sections. Do not leave sections empty — write "N/A" if not applicable.
+> Fill in all sections. Do not leave sections empty - write "N/A" if not applicable.
 
 ---
 
-# ADR-NNN — [Short Title]
+# ADR-NNN - [Short Title]
 
 **Date**: YYYY-MM-DD
 **Status**: Draft | Proposed | Accepted | Superseded | Deprecated

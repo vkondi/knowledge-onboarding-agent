@@ -1,28 +1,28 @@
-# Development
+﻿# Development
 
 ## Running tests
 
 Ensure the virtual environment is active before running tests.
 
 ```bash
-# Unit tests — no Ollama required
+# Unit tests - no Ollama required
 pytest tests/ -m "not integration"
 
-# Integration tests — Ollama must be running
+# Integration tests - Ollama must be running
 pytest tests/ -m "integration"
 
 # Unit tests with a coverage report
 pytest tests/ -m "not integration" --cov=src --cov-report=term-missing
 ```
 
-Current status: **231 unit tests passing**, 1 skipped (FAISS — not installed by default), 8 deselected (integration).
+Current status: **231 unit tests passing**, 1 skipped (FAISS - not installed by default), 8 deselected (integration).
 
 ## Project structure
 
 ```
 koa/
 ├── config/
-│   └── settings.yaml               # All runtime configuration — edit this file
+│   └── settings.yaml               # All runtime configuration - edit this file
 ├── src/knowledge_onboarding_agent/
 │   ├── config.py                   # Pydantic settings loader
 │   ├── interfaces.py               # Protocol contracts between pipeline stages
@@ -32,7 +32,7 @@ koa/
 │   ├── storage/                    # ChromaDBStore (primary), FAISSStore (optional)
 │   ├── retrieval/                  # SemanticSearch
 │   └── orchestration/              # QueryEngine, CLI entry point (cli_entry)
-├── tests/                          # Mirror of src/ — unit + integration tests
+├── tests/                          # Mirror of src/ - unit + integration tests
 ├── scripts/
 │   └── validate_environment.py     # Pre-flight check script
 ├── docs/                           # Architecture docs, constraints, ADRs, roadmap
@@ -51,4 +51,4 @@ Markdown files
   → Answer
 ```
 
-Each stage is isolated — stages never import from each other. All inter-stage contracts are `typing.Protocol` interfaces defined in `interfaces.py`.
+Each stage is isolated - stages never import from each other. All inter-stage contracts are `typing.Protocol` interfaces defined in `interfaces.py`.

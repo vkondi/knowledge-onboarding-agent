@@ -1,6 +1,6 @@
 ﻿# Knowledge Onboarding Agent
 
-> A local-first AI-powered knowledge assistant that ingests your markdown notes, indexes them with local embeddings, and answers questions by reasoning across your entire knowledge base — entirely on your own hardware, with no cloud APIs.
+> A local-first AI-powered knowledge assistant that ingests your markdown notes, indexes them with local embeddings, and answers questions by reasoning across your entire knowledge base - entirely on your own hardware, with no cloud APIs.
 
 ---
 
@@ -9,12 +9,11 @@
 1. [Prerequisites](#prerequisites)
 2. [Installation](#installation)
 3. [Validate Your Environment](#validate-your-environment)
+4. [Next Steps](#next-steps)
 
 ---
 
 ## Prerequisites
-
-Before installing Knowledge Onboarding Agent, ensure the following are set up on your machine.
 
 ### 1. Python 3.11 or later
 
@@ -39,8 +38,6 @@ Ollama runs the local LLM and embedding models.
 
 ### 3. Pull the required models
 
-Knowledge Onboarding Agent needs two models. Pull them while Ollama is running:
-
 ```bash
 # Embedding model (~274 MB)
 ollama pull nomic-embed-text
@@ -49,17 +46,11 @@ ollama pull nomic-embed-text
 ollama pull mistral
 ```
 
-Verify both are present:
-
-```bash
-ollama list
-```
-
-You should see `nomic-embed-text` and `mistral` in the output.
+Verify: `ollama list` should list both models.
 
 ### 4. Hardware
 
-- **RAM**: 16 GB recommended (8 GB minimum — model loading may be slow)
+- **RAM**: 16 GB recommended (8 GB minimum - model loading may be slow)
 - **Disk**: ~5 GB free for models + vector database
 - **CPU-only inference** is supported; a GPU is not required
 
@@ -77,14 +68,14 @@ cd koa
 ### 2. Create a virtual environment
 
 ```powershell
-# Windows — PowerShell
+# Windows - PowerShell
 python -m venv .venv
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 .venv\Scripts\Activate.ps1
 ```
 
 ```cmd
-:: Windows — Command Prompt
+:: Windows - Command Prompt
 python -m venv .venv
 .venv\Scripts\activate.bat
 ```
@@ -95,7 +86,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-> **Note (Windows PowerShell):** The `Set-ExecutionPolicy` line is required once per terminal session because Windows blocks running unsigned `.ps1` scripts by default. It does not change any permanent system setting.
+> **Note (Windows PowerShell):** `Set-ExecutionPolicy` is required once per session - Windows blocks unsigned `.ps1` scripts by default. This does not change any permanent system setting.
 
 ### 3. Install the package and its dependencies
 
@@ -103,11 +94,9 @@ source .venv/bin/activate
 pip install -e ".[dev]"
 ```
 
-This installs the `koa` CLI command and all required packages (ChromaDB, LlamaIndex, Watchdog, Ollama client, Pydantic, PyYAML).
+This installs the `koa` CLI and all required dependencies.
 
 ### 4. (Optional) Install FAISS support
-
-FAISS is a secondary vector store backend. Skip this if you plan to use ChromaDB (the default).
 
 ```bash
 pip install -e ".[faiss]"
@@ -142,12 +131,67 @@ If any check shows `[FAIL]`, resolve it before continuing.
 
 ---
 
-## Next steps
+## Next Steps
+
+### Step 1 - Configure your paths
+
+Open `config/settings.yaml` and set `ingestion.watch_paths` to the folders containing your markdown files. Review the full settings reference to tune chunking, retrieval, and model options.
+
+→ [Configuration guide](docs/getting-started/configuration.md)
+
+### Step 2 - Index your documents
+
+Parse, chunk, embed, and store your documents. Unchanged files are detected by content hash and skipped automatically.
+
+```bash
+koa ingest sample-knowledge/
+```
+
+→ [Indexing guide](docs/getting-started/indexing.md)
+
+### Step 3 - Query your knowledge base
+
+Ask questions, detect conflicting claims across sources, or generate a progressive reading path for a topic.
+
+```bash
+koa ask "What are decorators in Python and how do you use them?"
+koa conflicts "git workflow"
+koa path "machine learning"
+```
+
+→ [Querying guide](docs/getting-started/querying.md)
+
+### Step 4 - Keep documents up to date _(optional)_
+
+Monitor your notes folders continuously - files are re-indexed automatically on any change.
+
+```bash
+koa watch sample-knowledge/
+```
+
+→ [Indexing guide - watch mode](docs/getting-started/indexing.md#watch-folders-for-live-updates)
+
+---
+
+### Reference
 
 | Topic | Guide |
 |---|---|
-| Configure paths and model settings | [docs/getting-started/configuration.md](docs/getting-started/configuration.md) |
-| Index your documents | [docs/getting-started/indexing.md](docs/getting-started/indexing.md) |
-| Ask questions, detect conflicts, generate learning paths | [docs/getting-started/querying.md](docs/getting-started/querying.md) |
-| Run tests and understand the project layout | [docs/getting-started/development.md](docs/getting-started/development.md) |
-| Diagnose common errors | [docs/getting-started/troubleshooting.md](docs/getting-started/troubleshooting.md) |
+| All settings and their defaults | [configuration.md](docs/getting-started/configuration.md) |
+| Running tests, project layout, pipeline overview | [development.md](docs/getting-started/development.md) |
+| Common errors and fixes | [troubleshooting.md](docs/getting-started/troubleshooting.md) |
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](./LICENSE).
+
+## 📞 Contact
+
+- **LinkedIn**: [Vishwajeet Kondi](https://www.linkedin.com/in/vishwajeetkondi/)
+- **GitHub**: [@vkondi](https://github.com/vkondi)
+
+---
+
+_Vibe coded with local models, markdown, and the quiet satisfaction of zero cloud API calls_ 🧠📝🔒

@@ -1,4 +1,4 @@
-# Git Version Control — Practical Guide
+﻿# Git Version Control - Practical Guide
 
 Git is a distributed version control system. Every developer has a full copy of the repository history locally.
 
@@ -8,7 +8,7 @@ Git is a distributed version control system. Every developer has a full copy of 
 - **Working tree**: The files you currently see and edit.
 - **Staging area (index)**: Where you prepare changes before committing.
 - **Commit**: A snapshot of the staged changes, stored permanently in history.
-- **Branch**: A lightweight pointer to a commit — lets you work in parallel without affecting `main`.
+- **Branch**: A lightweight pointer to a commit - lets you work in parallel without affecting `main`.
 - **Remote**: A copy of the repo hosted elsewhere (e.g., GitHub, GitLab).
 
 ## Essential Commands
@@ -66,7 +66,7 @@ Short-lived feature branches off `main`, opened as Pull Requests, reviewed, then
 
 | | Merge | Rebase |
 |---|---|---|
-| History | Preserves full branch history | Rewrites commits onto target branch — cleaner linear history |
+| History | Preserves full branch history | Rewrites commits onto target branch - cleaner linear history |
 | Safety | Always safe | Never rebase shared/public branches |
 | Use case | Feature integration | Cleaning up local commits before PR |
 

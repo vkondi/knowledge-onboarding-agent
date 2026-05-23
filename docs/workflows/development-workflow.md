@@ -1,4 +1,4 @@
-# Development Workflow — Knowledge Onboarding Agent
+﻿# Development Workflow - Knowledge Onboarding Agent
 
 > **Purpose**: Define the repeatable workflow for AI-assisted development on this project.
 > Following this workflow minimizes context drift, hallucinated assumptions, and inconsistent code generation.
@@ -24,8 +24,8 @@ At the beginning of every AI session (Copilot, ChatGPT, etc.), paste this as you
 ```
 Please load and acknowledge the following project context files before we begin:
 
-1. .github/context/CONTEXT.md — project identity, stack, conventions
-2. .github/context/implementation-tracker.md — what is built, in progress, and next
+1. .github/context/CONTEXT.md - project identity, stack, conventions
+2. .github/context/implementation-tracker.md - what is built, in progress, and next
 
 After loading, summarize:
 - Current project phase
@@ -67,7 +67,7 @@ Use when: writing a specific module, function, or test.
 2. Reference the relevant ADR(s) and system design section
 3. State exactly what needs to be built (reference `implementation-tracker.md`)
 4. Ask the AI to propose the interface first (data models, function signatures)
-5. Review the interface — reject anything that violates conventions or constraints
+5. Review the interface - reject anything that violates conventions or constraints
 6. Ask for implementation with tests
 7. Review for: circular imports, hardcoded values, missing Protocol usage
 8. Update `implementation-tracker.md` with completed task
@@ -182,7 +182,7 @@ If Copilot or any AI suggests something that contradicts the established archite
 1. Stop and reference the relevant ADR or `system-design.md`
 2. Paste the relevant section into the chat: "This contradicts our architecture: [paste]"
 3. Ask the AI to revise its suggestion to align with the established design
-4. If the AI's suggestion is actually better, create an ADR to formally evaluate it — don't silently deviate
+4. If the AI's suggestion is actually better, create an ADR to formally evaluate it - don't silently deviate
 
 ---
 

@@ -1,4 +1,4 @@
-# Querying the Knowledge Base
+﻿# Querying the Knowledge Base
 
 Make sure the virtual environment is active and Ollama is running before using any of these commands.
 
@@ -74,19 +74,19 @@ When a genuine contradiction is found, the LLM describes it clearly: `"Source A 
 koa path "machine learning"
 ```
 
-Returns indexed documents on the topic ordered for progressive reading — grouped by source file, preserving the author's original chunk order:
+Returns indexed documents on the topic ordered for progressive reading - grouped by source file, preserving the author's original chunk order:
 
 ```
 Suggested reading order for 'machine learning':
 
 sample-knowledge\deep-learning.md
   [0] Deep learning is a subfield of machine learning that uses neural networks with…
-  [10] - Dropout: randomly zeroes neuron activations during training — prevents co-…
+  [10] - Dropout: randomly zeroes neuron activations during training - prevents co-…
   [12] Train on a large dataset (e.g., ImageNet, a large text corpus), then fine-tune…
 
 sample-knowledge\machine-learning-intro.md
   [0] Machine learning (ML) is a branch of artificial intelligence that allows…
-  [1] The model learns from labelled training data — each input has a corresponding…
+  [1] The model learns from labelled training data - each input has a corresponding…
   [6] - Overfitting: Model memorises training data but performs poorly on new data.…
   [7] | Library | Purpose | |---|---| | scikit-learn | Classical ML algorithms,…
 ```
@@ -96,7 +96,7 @@ sample-knowledge\machine-learning-intro.md
 | Command | Description |
 |---|---|
 | `koa ingest <path> [path …]` | Index markdown files from one or more files or directories |
-| `koa watch [path …]` | Watch paths and re-index on change — uses `settings.yaml` if no path given (Ctrl+C to stop) |
+| `koa watch [path …]` | Watch paths and re-index on change - uses `settings.yaml` if no path given (Ctrl+C to stop) |
 | `koa reingest [path …]` | Wipe the vector store and re-index from scratch |
 | `koa ask "<question>"` | Answer a natural-language question using the knowledge base |
 | `koa conflicts "<topic>"` | Detect contradictions between sources on a topic |

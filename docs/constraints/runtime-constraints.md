@@ -1,4 +1,4 @@
-# Runtime Constraints — Knowledge Onboarding Agent
+﻿# Runtime Constraints - Knowledge Onboarding Agent
 
 > **Purpose**: Document the hard constraints that every architectural and implementation decision must respect.
 > These are non-negotiable. Add to this list; never remove without a new ADR.
@@ -48,7 +48,7 @@
 | Python version | 3.11 or later |
 | Package manager | pip with `pyproject.toml`; optionally `uv` |
 | No private PyPI | All dependencies must be available on public PyPI |
-| Dependency pinning | `requirements.lock` or locked extras in `pyproject.toml` for reproducibility |
+| Dependency pinning | Version lower bounds declared in `pyproject.toml`; use `pip freeze > requirements.txt` for fully reproducible installs |
 
 ---
 
@@ -57,7 +57,7 @@
 | Constraint | Detail |
 |---|---|
 | Incremental indexing | Never re-embed a document that has not changed. Use content hashes. |
-| Graceful degradation | If Ollama is not running, the watcher still collects file events; they are queued and processed when Ollama becomes available |
+| Graceful degradation | If Ollama is not running, the watcher still collects file events via `queue.Queue`. However, the embedding call will fail and the watch loop will exit; events are not currently retried automatically. |
 | No data egress | No document content, embeddings, or metadata leaves the machine |
 | Persistence | Vector store must persist to disk; data must survive process restart |
 
@@ -82,15 +82,13 @@ These are not hard failures but design targets. Performance regressions against 
 
 | Package | Role |
 |---|---|
-| `llama-index` | Orchestration framework |
 | `chromadb` | Primary vector store |
 | `faiss-cpu` | Alternative vector store |
 | `watchdog` | File system monitoring |
 | `ollama` (Python client) | Ollama API client |
 | `pydantic` | Data validation and config |
 | `pytest` | Testing |
-| `mistune` or `python-markdown` | Markdown parsing |
-| `pyyaml` | Config loading |
+| `pyyaml` | Config loading and front matter parsing |
 
 ### Avoid
 

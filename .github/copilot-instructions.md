@@ -1,4 +1,4 @@
-# GitHub Copilot Instructions — Knowledge Onboarding Agent
+﻿# GitHub Copilot Instructions - Knowledge Onboarding Agent
 
 <!-- 
   This file governs how Copilot behaves in this repository.
@@ -8,11 +8,11 @@
 
 ## Project Identity
 
-You are helping develop **Knowledge Onboarding Agent** — a local-first AI-powered knowledge system that ingests markdown files, generates local embeddings, and synthesizes answers using a local Ollama LLM. No cloud AI APIs are used.
+You are helping develop **Knowledge Onboarding Agent** - a local-first AI-powered knowledge system that ingests markdown files, generates local embeddings, and synthesizes answers using a local Ollama LLM. No cloud AI APIs are used.
 
 Before writing any code, you should understand the project's current state. Ask me to load context if it hasn't been established:
-- `.github/context/CONTEXT.md` — project identity, stack, conventions
-- `.github/context/implementation-tracker.md` — current progress
+- `.github/context/CONTEXT.md` - project identity, stack, conventions
+- `.github/context/implementation-tracker.md` - current progress
 
 ---
 
@@ -92,7 +92,7 @@ src/knowledge_onboarding_agent/
 
 1. Confirm which phase and task is being worked on (reference `implementation-tracker.md`)
 2. Check whether a relevant ADR exists before proposing an architectural approach
-3. Propose the **interface / data model first** — get confirmation before implementing
+3. Propose the **interface / data model first** - get confirmation before implementing
 4. Implement with tests
 5. Do not add features beyond the stated task
 
@@ -102,7 +102,7 @@ src/knowledge_onboarding_agent/
 
 - Do not use `os.system()` or `subprocess` for tasks that Python libraries handle
 - Do not add optional features that weren't requested ("I've also added X which might be useful")
-- Do not suggest cloud-based alternatives as "better" options — local-first is a constraint, not a preference
+- Do not suggest cloud-based alternatives as "better" options - local-first is a constraint, not a preference
 - Do not write implementation code before the interface is agreed upon
 - Do not suggest `asyncio` unless we are explicitly in an async implementation phase
 - Do not import from a stage that is downstream in the pipeline
@@ -111,7 +111,7 @@ src/knowledge_onboarding_agent/
 
 ## When You're Unsure
 
-If a task could be implemented multiple ways that make different architectural tradeoffs, present the options with their tradeoffs — don't silently pick one. Reference the constraints document if relevant: `docs/constraints/runtime-constraints.md`.
+If a task could be implemented multiple ways that make different architectural tradeoffs, present the options with their tradeoffs - don't silently pick one. Reference the constraints document if relevant: `docs/constraints/runtime-constraints.md`.
 
 ---
 

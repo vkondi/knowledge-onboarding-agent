@@ -1,4 +1,4 @@
-# Vector Databases and Semantic Search
+﻿# Vector Databases and Semantic Search
 
 Vector databases are purpose-built storage systems for high-dimensional embedding
 vectors. Unlike traditional relational databases that match records on exact
@@ -17,7 +17,7 @@ ANN search is approximate because exact nearest-neighbor search in high
 dimensions is prohibitively expensive. The curse of dimensionality means that
 brute-force distance comparisons become impractical as the number of dimensions
 grows. ANN algorithms like HNSW, IVF, and LSH trade a small amount of recall for
-dramatic speedups — finding 95% of the true nearest neighbors in milliseconds
+dramatic speedups - finding 95% of the true nearest neighbors in milliseconds
 rather than seconds.
 
 ## Embedding Dimensions and Memory
@@ -69,7 +69,7 @@ configuration beyond a storage path. ChromaDB is the right default for a project
 that needs to store and query documents with metadata filtering.
 
 FAISS is a lower-level library from Meta that implements several ANN index
-types with extremely high performance. FAISS has no built-in metadata storage —
+types with extremely high performance. FAISS has no built-in metadata storage -
 it stores only integer IDs, and the caller must maintain a separate mapping from
 IDs to documents. FAISS is the right choice when maximum throughput matters and
 the application can manage its own metadata layer.

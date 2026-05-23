@@ -1,4 +1,4 @@
-# Configuration
+﻿# Configuration
 
 All runtime settings live in `config/settings.yaml`. Edit this file to change behaviour. Never hardcode values in source files.
 
@@ -30,7 +30,7 @@ Paths may be absolute or relative to the project root. Any folder listed here is
 | `storage.path` | `./.knowledge-onboarding-agent/db` | Local folder for the vector database |
 | `storage.collection_name` | `knowledge_base` | ChromaDB collection name |
 | `retrieval.top_k` | `10` | Maximum number of chunks retrieved per query |
-| `retrieval.top_k_scale_factor` | `0.5` | Dynamic scaling factor — grows effective k with KB size; set to `0.0` to use `top_k` directly |
+| `retrieval.top_k_scale_factor` | `0.5` | Dynamic scaling factor - grows effective k with KB size; set to `0.0` to use `top_k` directly |
 | `retrieval.reranking_enabled` | `false` | Enable cross-encoder reranking (improves precision, adds latency) |
 | `llm.model` | `mistral` | Ollama LLM model name for answer synthesis |
 | `llm.ollama_base_url` | `http://localhost:11434` | Ollama daemon URL for LLM inference |

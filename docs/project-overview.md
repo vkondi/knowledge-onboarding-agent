@@ -1,4 +1,4 @@
-# Project Overview — Knowledge Onboarding Agent
+﻿# Project Overview - Knowledge Onboarding Agent
 
 > **Purpose of this document**: Authoritative description of what Knowledge Onboarding Agent is, what it is trying to achieve, and what it explicitly is not.
 > Update this document when the project scope changes.
@@ -9,10 +9,10 @@
 
 Knowledge workers accumulate large amounts of markdown notes, technical articles, blog posts, and documentation. This material is:
 
-- **Scattered** — across folders, tools, and formats
-- **Unsearchable** — keyword search misses semantic relationships
-- **Unsynthesized** — insights across documents remain siloed
-- **Ephemeral** — context is lost when a browser tab closes
+- **Scattered** - across folders, tools, and formats
+- **Unsearchable** - keyword search misses semantic relationships
+- **Unsynthesized** - insights across documents remain siloed
+- **Ephemeral** - context is lost when a browser tab closes
 
 Existing solutions (Notion, Obsidian, Roam) provide organization but do not reason across content. Cloud AI tools (ChatGPT, Perplexity) require sending private notes to third-party servers.
 

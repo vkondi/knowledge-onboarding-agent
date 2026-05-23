@@ -1,9 +1,9 @@
----
+﻿---
 mode: ask
 description: Summarize the current session into a context-continuity log entry for Knowledge Onboarding Agent.
 ---
 
-# Context Summarization — Knowledge Onboarding Agent
+# Context Summarization - Knowledge Onboarding Agent
 
 ## Purpose
 
@@ -20,7 +20,7 @@ Based on everything we have discussed and implemented in this session, please ge
 In this format (for `.github/context/session-log.md`):
 
 ```markdown
-## YYYY-MM-DD — [Brief Title]
+## YYYY-MM-DD - [Brief Title]
 
 **Session goal**: 
 **Completed**: 
@@ -50,4 +50,4 @@ List any changes that should be reflected in `.github/context/CONTEXT.md`:
 
 Provide each section separately so I can paste them into the appropriate files.
 
-Do not update any files yourself — give me the content and I will apply it.
+Do not update any files yourself - give me the content and I will apply it.

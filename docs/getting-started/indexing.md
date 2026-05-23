@@ -1,4 +1,4 @@
-# Indexing Documents
+﻿# Indexing Documents
 
 Before querying, documents must be indexed. The ingestion pipeline reads your markdown files, splits them into overlapping chunks, generates embeddings via Ollama, and stores them in ChromaDB.
 
@@ -7,7 +7,7 @@ The vector database is persisted to `.knowledge-onboarding-agent/db/` (configura
 ## Index a folder or file
 
 ```bash
-# Index an entire folder (recursive — finds all .md and .markdown files)
+# Index an entire folder (recursive - finds all .md and .markdown files)
 koa ingest sample-knowledge/
 
 # Index a single file
@@ -35,7 +35,7 @@ Running `koa ingest sample-knowledge/` for the first time produces output like:
 Done. 200 new chunk(s) added to the knowledge base.
 ```
 
-**Re-running is safe.** Unchanged files are detected by content hash and skipped automatically — only new or modified content is re-embedded. Running the same command again shows:
+**Re-running is safe.** Unchanged files are detected by content hash and skipped automatically - only new or modified content is re-embedded. Running the same command again shows:
 
 ```
   ai-agents.md: 56 chunks (0 new)

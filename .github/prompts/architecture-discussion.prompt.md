@@ -1,16 +1,16 @@
----
+﻿---
 mode: ask
 description: Start an architecture discussion for Knowledge Onboarding Agent. Loads project context and frames the decision correctly.
 ---
 
-# Architecture Discussion — Knowledge Onboarding Agent
+# Architecture Discussion - Knowledge Onboarding Agent
 
 ## Context
 
 I am working on **Knowledge Onboarding Agent**, a local-first AI knowledge system.
 
 Before we discuss, please acknowledge these constraints (from `docs/constraints/runtime-constraints.md`):
-- Entirely local — no cloud AI APIs
+- Entirely local - no cloud AI APIs
 - 16GB RAM laptop, CPU-only inference
 - Ollama for all LLM and embedding inference
 - Python 3.11+, LlamaIndex, ChromaDB
@@ -18,7 +18,7 @@ Before we discuss, please acknowledge these constraints (from `docs/constraints/
 And these architecture rules (from `.github/copilot-instructions.md`):
 - Pipeline stages are isolated (no cross-stage imports)
 - Interfaces are Protocols, not ABCs
-- No hardcoded values — everything from `config/settings.yaml`
+- No hardcoded values - everything from `config/settings.yaml`
 
 ---
 

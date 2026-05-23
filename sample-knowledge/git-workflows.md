@@ -1,4 +1,4 @@
-# Git Workflows and Team Collaboration
+﻿# Git Workflows and Team Collaboration
 
 This guide covers branching strategies, pull request practices, and CI/CD integration for teams using Git.
 
@@ -6,11 +6,11 @@ This guide covers branching strategies, pull request practices, and CI/CD integr
 
 Git Flow uses a rigid set of branches suited to projects with scheduled releases:
 
-- **main** — production-ready code only. Never commit here directly.
-- **develop** — integration branch for completed features.
-- **feature/*** — branched from `develop`, merged back when done.
-- **release/*** — branched from `develop` when preparing a release; only bug fixes go here.
-- **hotfix/*** — branched from `main` for urgent production fixes; merged to both `main` and `develop`.
+- **main** - production-ready code only. Never commit here directly.
+- **develop** - integration branch for completed features.
+- **feature/*** - branched from `develop`, merged back when done.
+- **release/*** - branched from `develop` when preparing a release; only bug fixes go here.
+- **hotfix/*** - branched from `main` for urgent production fixes; merged to both `main` and `develop`.
 
 ```
 main ←────────────────────── hotfix/critical-bug
@@ -37,7 +37,7 @@ Use TBD when: continuous deployment, small–medium teams, high test coverage, f
 A simpler alternative to Git Flow:
 1. Branch off `main` with a descriptive name (`feature/add-login`, `fix/broken-nav`).
 2. Commit early and often on your branch.
-3. Open a Pull Request (PR) when ready for review — even if not finished ("Draft PR").
+3. Open a Pull Request (PR) when ready for review - even if not finished ("Draft PR").
 4. Reviewers comment; author addresses feedback with new commits.
 5. CI must pass before merge.
 6. Merge to `main` → deploy immediately.
@@ -79,7 +79,7 @@ Rules:
 ## Pull Request Best Practices
 
 **Author responsibilities:**
-- Keep PRs small — under 400 lines of change is a good guideline.
+- Keep PRs small - under 400 lines of change is a good guideline.
 - Describe *why* the change was made, not just *what* changed.
 - Self-review your diff before requesting review.
 - Respond to feedback promptly; don't let PRs go stale.

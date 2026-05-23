@@ -1,10 +1,10 @@
-# ML Model Evaluation and Validation
+﻿# ML Model Evaluation and Validation
 
-Going beyond basic accuracy metrics — this guide covers evaluation strategies, validation techniques, and common pitfalls when assessing model performance.
+Going beyond basic accuracy metrics - this guide covers evaluation strategies, validation techniques, and common pitfalls when assessing model performance.
 
 ## Why Accuracy Alone is Misleading
 
-On a dataset where 95% of samples are class A and 5% are class B, a model that always predicts class A achieves 95% accuracy — but is completely useless.
+On a dataset where 95% of samples are class A and 5% are class B, a model that always predicts class A achieves 95% accuracy - but is completely useless.
 
 Always look at your class distribution before choosing a metric.
 
@@ -20,14 +20,14 @@ Always look at your class distribution before choosing a metric.
 ### Derived Metrics
 
 ```
-Precision  = TP / (TP + FP)    — of all positive predictions, how many were correct?
-Recall     = TP / (TP + FN)    — of all actual positives, how many did we catch?
-F1         = 2 × (P × R) / (P + R)   — harmonic mean of precision and recall
+Precision  = TP / (TP + FP)    - of all positive predictions, how many were correct?
+Recall     = TP / (TP + FN)    - of all actual positives, how many did we catch?
+F1         = 2 × (P × R) / (P + R)   - harmonic mean of precision and recall
 Accuracy   = (TP + TN) / total
 ```
 
-- High **precision** matters when false positives are costly (e.g., spam filter — don't block good emails).
-- High **recall** matters when false negatives are costly (e.g., cancer screening — don't miss cases).
+- High **precision** matters when false positives are costly (e.g., spam filter - don't block good emails).
+- High **recall** matters when false negatives are costly (e.g., cancer screening - don't miss cases).
 
 ### AUC-ROC
 
@@ -42,9 +42,9 @@ Use AUC-ROC for imbalanced datasets where the positive class is rare.
 ## Regression Metrics
 
 ```
-MAE  = mean(|y_true - y_pred|)                — interpretable; same units as target
-RMSE = sqrt(mean((y_true - y_pred)²))         — penalises large errors more
-R²   = 1 - SS_res / SS_tot                   — proportion of variance explained (1.0 = perfect)
+MAE  = mean(|y_true - y_pred|)                - interpretable; same units as target
+RMSE = sqrt(mean((y_true - y_pred)²))         - penalises large errors more
+R²   = 1 - SS_res / SS_tot                   - proportion of variance explained (1.0 = perfect)
 ```
 
 ## Validation Strategies
@@ -54,7 +54,7 @@ R²   = 1 - SS_res / SS_tot                   — proportion of variance explain
 Split data into three sets:
 - **Training set** (60–70%): fit the model.
 - **Validation set** (15–20%): tune hyperparameters and select models.
-- **Test set** (15–20%): evaluate the final model once — never use it to make decisions.
+- **Test set** (15–20%): evaluate the final model once - never use it to make decisions.
 
 **Critical**: the test set must not influence any modelling decision. Looking at test performance during development causes data leakage.
 
@@ -72,7 +72,7 @@ Use CV when data is scarce. Standard k=5 or k=10.
 
 ### Stratified Cross-Validation
 
-Ensures each fold has the same class proportion as the full dataset — essential for imbalanced classification.
+Ensures each fold has the same class proportion as the full dataset - essential for imbalanced classification.
 
 ```python
 from sklearn.model_selection import StratifiedKFold
