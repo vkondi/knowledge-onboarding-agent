@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "knowledge-onboarding-agent"
+version = "0.1.0"
+description = "Local-first AI-powered knowledge system"
+requires-python = ">=3.11"
+dependencies = [
+    "llama-index>=0.10",
+    "chromadb>=0.5",
+    "watchdog>=4.0",
+    "ollama>=0.2",
+    "pydantic>=2.0",
+    "pyyaml>=6.0",
+    "mistune>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+faiss = [
+    "faiss-cpu>=1.8",
+]
+ram-check = [
+    "psutil>=5.9",
+]
+
+[project.scripts]
+koa = "knowledge_onboarding_agent.orchestration:cli_entry"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: marks tests that require a running Ollama instance (skip with '-m not integration')",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["tests/*", "scripts/*", "experiments/*"]

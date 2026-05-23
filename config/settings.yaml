@@ -1,0 +1,69 @@
+# Knowledge Onboarding Agent — Runtime Configuration
+# All tuneable values live here. Source code must never hardcode these values.
+# See docs/constraints/runtime-constraints.md for limits and rationale.
+
+ingestion:
+  # Directories to monitor for new/changed markdown files.
+  # Paths may be absolute or relative to the working directory.
+  watch_paths: ['sample-knowledge']
+
+  chunking:
+    # Strategy name — must match a registered ChunkingStrategy implementation.
+    # Options: sentence_window, fixed_size, recursive
+    strategy: sentence_window
+
+    # Target chunk size in tokens (approximate).
+    # nomic-embed-text supports up to 8192 tokens; keep well below to preserve context quality.
+    chunk_size: 512
+
+    # Overlap between consecutive chunks in tokens.
+    chunk_overlap: 64
+
+embeddings:
+  # Ollama model name for generating embeddings.
+  # See ADR-001 for selection rationale.
+  model: nomic-embed-text
+
+  # Number of chunks to embed in a single Ollama API call.
+  # Reduce if memory pressure is observed.
+  batch_size: 32
+
+  ollama_base_url: http://localhost:11434
+
+storage:
+  # Vector store backend. Options: chromadb, faiss
+  backend: chromadb
+
+  # Local directory for ChromaDB persistence.
+  path: ./.knowledge-onboarding-agent/db
+
+  # ChromaDB collection name.
+  collection_name: knowledge_base
+
+retrieval:
+  # Hard cap — never retrieve more than this many chunks per query.
+  # Practical RAG ceiling: LLM context quality degrades beyond ~10 chunks.
+  top_k: 10
+
+  # Sub-linear scaling factor: effective_k = max(3, min(top_k, round(sqrt(total_chunks) * factor)))
+  # Grows slowly with KB size: 50 chunks->4, 100->5, 160->6, 400->10(capped).
+  # Set to 0.0 to disable dynamic scaling and use top_k directly.
+  top_k_scale_factor: 0.5
+
+  # Enable cross-encoder reranking of retrieved results.
+  # Disabled by default — adds latency, improves precision.
+  reranking_enabled: false
+
+llm:
+  # Ollama model name for answer synthesis.
+  # See ADR-001 for selection rationale.
+  model: mistral
+
+  ollama_base_url: http://localhost:11434
+
+  # Lower temperature = more deterministic, grounded answers.
+  # Recommended for RAG: 0.0–0.2
+  temperature: 0.1
+
+  # Maximum context window in tokens to pass to the LLM.
+  context_window: 8192

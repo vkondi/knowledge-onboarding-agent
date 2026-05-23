@@ -1,0 +1,42 @@
+# ── Runtime data (vector store, ChromaDB) ──────────────────────────────────
+.knowledge-onboarding-agent/
+
+# ── Python bytecode ─────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# ── Distribution / packaging ─────────────────────────────────────────────────
+*.egg-info/
+*.egg
+dist/
+build/
+MANIFEST
+
+# ── Virtual environments ─────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Test & coverage ──────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# ── IDE / editor ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── OS artefacts ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── FAISS index files ────────────────────────────────────────────────────────
+*.index
+*.faiss
+
